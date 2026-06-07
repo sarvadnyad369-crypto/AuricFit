@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuricFit Club | Premium Gym & Wellness Studio</title>
+  <meta name="description" content="A premium bright gym website template with elegant textures, gallery, plans, trainers, FAQ and booking form." />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #15120c;
+      --muted: #746d62;
+      --paper: #fffaf0;
+      --white: #ffffff;
+      --cream: #fff4d9;
+      --champagne: #f6d98b;
+      --gold: #c69730;
+      --gold-dark: #9f7417;
+      --lime: #d9ff4f;
+      --orange: #ffb347;
+      --line: rgba(38, 28, 10, 0.11);
+      --shadow: 0 28px 80px rgba(62, 42, 8, 0.15);
+      --shadow-soft: 0 16px 48px rgba(62, 42, 8, 0.10);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(255, 214, 102, 0.42), transparent 27rem),
+        radial-gradient(circle at 92% 10%, rgba(217, 255, 79, 0.25), transparent 24rem),
+        linear-gradient(135deg, #fffaf0 0%, #fff6df 42%, #fffefa 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .35;
+      background-image:
+        linear-gradient(rgba(21,18,12,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21,18,12,.035) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.18'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+      opacity: .18;
+      z-index: -1;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .top-strip {
+      background: #18130c;
+      color: #fff6df;
+      font-size: 13px;
+      letter-spacing: .02em;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .top-strip .container {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .top-strip span { color: var(--champagne); font-weight: 800; }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(24px);
+      background: rgba(255, 250, 240, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      font-size: 23px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background:
+        linear-gradient(135deg, #fff2b6, #d6a93a 54%, #7a4f05),
+        linear-gradient(135deg, #fff, #eee);
+      color: #18130c;
+      box-shadow: 0 16px 34px rgba(198,151,48,.32);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 12px;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: .22em;
+      color: var(--muted);
+      margin-top: -2px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.56);
+      border: 1px solid var(--line);
+      padding: 8px;
+      border-radius: 999px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 750;
+      color: #3b3123;
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover { background: #18130c; color: #fff7e5; }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 850;
+      border-radius: 999px;
+      padding: 14px 20px;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: #171008;
+      background: linear-gradient(135deg, #fff1a8, #f4c65f 45%, #c69730);
+      box-shadow: 0 18px 36px rgba(198,151,48,.34), inset 0 1px 0 rgba(255,255,255,.75);
+    }
+
+    .btn-dark {
+      background: #18130c;
+      color: #fff7e5;
+      box-shadow: 0 16px 34px rgba(20, 15, 8, .22);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,.7);
+      border: 1px solid var(--line);
+      color: #18130c;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-btn span { width: 20px; height: 2px; background: #1c160e; border-radius: 99px; }
+
+    .hero {
+      position: relative;
+      padding: 70px 0 88px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "FITNESS / STRENGTH / WELLNESS";
+      position: absolute;
+      left: 50%;
+      top: 28px;
+      transform: translateX(-50%);
+      font-size: clamp(52px, 9vw, 132px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -.08em;
+      color: rgba(21,18,12,.045);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      align-items: center;
+      gap: 44px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #654b08;
+      background: rgba(255,255,255,.66);
+      border: 1px solid rgba(198,151,48,.24);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 850;
+      font-size: 13px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 22px;
+    }
+
+    .eyebrow i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 6px rgba(217,255,79,.22);
+    }
+
+    h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(48px, 8vw, 94px);
+      line-height: .94;
+      letter-spacing: -.055em;
+      max-width: 840px;
+    }
+
+    .gradient-text {
+      display: inline-block;
+      background: linear-gradient(135deg, #171008, #b68116 58%, #f8c95e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin-top: 22px;
+      max-width: 640px;
+      color: #5f564a;
+      font-size: 18px;
+      line-height: 1.78;
+    }
+
+    .hero-actions { display: flex; align-items: center; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+
+    .mini-proof {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .avatars { display: flex; }
+    .avatars img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--paper);
+      margin-left: -12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.14);
+    }
+    .avatars img:first-child { margin-left: 0; }
+
+    .hero-card {
+      position: relative;
+      min-height: 650px;
+      border-radius: 42px;
+      padding: 16px;
+      background: linear-gradient(145deg, rgba(255,255,255,.86), rgba(255,241,181,.55));
+      border: 1px solid rgba(198,151,48,.26);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 16px;
+      overflow: hidden;
+      border-radius: 32px;
+      background: #d7c190;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.04) contrast(1.02);
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(20,14,8,.72), transparent 52%),
+        radial-gradient(circle at 18% 18%, rgba(255,239,170,.52), transparent 38%);
+    }
+
+    .floating-panel {
+      position: absolute;
+      z-index: 2;
+      border-radius: 24px;
+      background: rgba(255,255,255,.76);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.76);
+      box-shadow: 0 18px 44px rgba(30,20,5,.18);
+    }
+
+    .coach-panel {
+      left: -22px;
+      top: 48px;
+      width: 230px;
+      padding: 14px;
+    }
+
+    .coach-row { display: flex; align-items: center; gap: 12px; }
+    .coach-row img { width: 54px; height: 54px; border-radius: 18px; object-fit: cover; }
+    .coach-row strong { display: block; font-size: 15px; }
+    .coach-row span { display: block; color: var(--muted); font-size: 12px; margin-top: 3px; }
+
+    .session-panel {
+      right: -20px;
+      top: 268px;
+      width: 210px;
+      padding: 16px;
+    }
+
+    .session-panel .number { font-size: 36px; font-weight: 950; letter-spacing: -.07em; }
+    .session-panel span { color: var(--muted); font-weight: 700; font-size: 13px; }
+
+    .booking-panel {
+      left: 26px;
+      right: 26px;
+      bottom: 24px;
+      padding: 18px;
+      color: #fff7e5;
+      background: rgba(24,19,12,.78);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .booking-panel h3 { font-size: 22px; letter-spacing: -.04em; margin-bottom: 12px; }
+    .booking-panel .slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .slot {
+      padding: 12px 10px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+      font-weight: 750;
+      text-align: center;
+    }
+    .slot.active { color: #171008; background: var(--lime); }
+
+    .stats-ribbon {
+      position: relative;
+      margin-top: -34px;
+      z-index: 5;
+    }
+
+    .stats-box {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(198,151,48,.22);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .stat {
+      padding: 28px 22px;
+      border-right: 1px solid var(--line);
+    }
+    .stat:last-child { border-right: 0; }
+    .stat strong { display: block; font-size: clamp(28px, 4vw, 44px); letter-spacing: -.06em; }
+    .stat span { color: var(--muted); font-weight: 750; font-size: 14px; }
+
+    section { padding: 92px 0; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-head .copy { max-width: 610px; }
+
+    .kicker {
+      color: var(--gold-dark);
+      font-weight: 950;
+      letter-spacing: .18em;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
+
+    .section-head p, .lead {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16px;
+      margin-top: 12px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .feature-card {
+      position: relative;
+      min-height: 250px;
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      transition: .28s ease;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -70px;
+      top: -70px;
+      background: radial-gradient(circle, rgba(246,217,139,.62), transparent 68%);
+    }
+
+    .feature-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #18130c, #5b4310);
+      color: #fff1a8;
+      font-size: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 18px 30px rgba(21,18,12,.16);
+    }
+
+    .feature-card h3 { font-size: 21px; letter-spacing: -.04em; margin-bottom: 12px; }
+    .feature-card p { color: var(--muted); line-height: 1.65; font-size: 15px; }
+
+    .split {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .image-stack {
+      min-height: 580px;
+      position: relative;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.7);
+    }
+
+    .image-stack img { width: 100%; height: 100%; object-fit: cover; }
+
+    .image-stack::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(21,18,12,.56), transparent 55%);
+    }
+
+    .stack-label {
+      position: absolute;
+      z-index: 3;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.80);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.55);
+    }
+
+    .stack-label strong { display: block; font-size: 26px; letter-spacing: -.05em; }
+    .stack-label span { display: block; margin-top: 6px; color: var(--muted); line-height: 1.5; }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .program-card {
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card:nth-child(1) { background: linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,238,181,.66)); }
+    .program-card:nth-child(4) { background: linear-gradient(145deg, rgba(24,19,12,.94), rgba(81,60,17,.88)); color: #fff7e5; }
+    .program-card:nth-child(4) p, .program-card:nth-child(4) li { color: rgba(255,247,229,.75); }
+
+    .program-card h3 { font-size: 25px; letter-spacing: -.05em; margin-bottom: 8px; }
+    .program-card p { color: var(--muted); line-height: 1.65; }
+    .program-card ul { list-style: none; margin-top: 20px; display: grid; gap: 10px; }
+    .program-card li { color: #5f564a; display: flex; gap: 10px; font-weight: 650; font-size: 14px; }
+    .program-card li::before { content: "✦"; color: var(--gold-dark); font-weight: 950; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr 1fr;
+      grid-auto-rows: 230px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255,255,255,.7);
+      background: #ddd;
+    }
+
+    .gallery-item.large { grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
+
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20,14,8,.6), transparent 60%);
+    }
+
+    .gallery-item span {
+      position: absolute;
+      z-index: 2;
+      left: 18px;
+      bottom: 18px;
+      color: #fff7e5;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+
+    .pricing {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(217,255,79,.22), transparent 25rem),
+        linear-gradient(135deg, #18130c, #2c210f);
+      color: #fff7e5;
+      border-radius: 44px;
+      padding: 60px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 38px 38px;
+      opacity: .5;
+    }
+
+    .pricing > * { position: relative; }
+    .pricing .section-head p { color: rgba(255,247,229,.72); }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .price-card {
+      padding: 28px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(20px);
+    }
+
+    .price-card.featured {
+      background: linear-gradient(145deg, #fff5c7, #e8bd58);
+      color: #18130c;
+      transform: translateY(-12px);
+      box-shadow: 0 26px 58px rgba(0,0,0,.28);
+    }
+
+    .price-card .tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      font-size: 12px;
+      font-weight: 850;
+      margin-bottom: 20px;
+    }
+
+    .price-card.featured .tag { background: rgba(24,19,12,.12); }
+    .price-card h3 { font-size: 24px; letter-spacing: -.04em; }
+    .price { margin: 16px 0 18px; font-size: 48px; font-weight: 950; letter-spacing: -.08em; }
+    .price small { font-size: 14px; letter-spacing: 0; color: inherit; opacity: .72; }
+
+    .price-card ul { list-style: none; display: grid; gap: 12px; margin: 20px 0 24px; }
+    .price-card li { color: rgba(255,247,229,.76); display: flex; gap: 10px; line-height: 1.45; }
+    .price-card.featured li { color: #4b3c1b; }
+    .price-card li::before { content: "✓"; color: var(--lime); font-weight: 900; }
+    .price-card.featured li::before { color: #18130c; }
+
+    .trainers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .trainer-card {
+      overflow: hidden;
+      border-radius: 32px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .trainer-card img { width: 100%; height: 310px; object-fit: cover; }
+    .trainer-info { padding: 22px; }
+    .trainer-info h3 { font-size: 23px; letter-spacing: -.05em; }
+    .trainer-info p { color: var(--muted); line-height: 1.6; margin-top: 8px; }
+    .trainer-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .trainer-tags span { padding: 8px 10px; border-radius: 999px; background: #fff0bf; color: #654b08; font-size: 12px; font-weight: 850; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .quote-card {
+      padding: 26px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+    .stars { color: var(--gold-dark); letter-spacing: .08em; margin-bottom: 18px; }
+    .quote-card p { color: #4e4539; line-height: 1.75; }
+    .member { display: flex; align-items: center; gap: 12px; margin-top: 22px; }
+    .member img { width: 48px; height: 48px; border-radius: 16px; object-fit: cover; }
+    .member strong { display: block; }
+    .member span { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+    .faq-contact {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .faq-list { display: grid; gap: 12px; }
+    details {
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    summary { cursor: pointer; font-weight: 850; letter-spacing: -.02em; }
+    details p { color: var(--muted); line-height: 1.65; margin-top: 14px; }
+
+    .contact-card {
+      padding: 28px;
+      border-radius: 34px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(198,151,48,.22);
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 22px; }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: 13px; font-weight: 850; color: #4f4435; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(38,28,10,.13);
+      border-radius: 16px;
+      padding: 14px 15px;
+      background: rgba(255,255,255,.78);
+      outline: none;
+      transition: .22s ease;
+      color: var(--ink);
+    }
+    textarea { resize: vertical; min-height: 110px; }
+    input:focus, select:focus, textarea:focus { border-color: rgba(198,151,48,.7); box-shadow: 0 0 0 5px rgba(198,151,48,.12); }
+
+    .contact-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .meta-box {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,244,217,.72);
+      border: 1px solid rgba(198,151,48,.18);
+    }
+    .meta-box strong { display: block; font-size: 13px; }
+    .meta-box span { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    footer {
+      padding: 54px 0 24px;
+      background: #18130c;
+      color: #fff7e5;
+      margin-top: 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr .9fr;
+      gap: 28px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    footer .brand small { color: rgba(255,247,229,.55); }
+    footer p { color: rgba(255,247,229,.68); line-height: 1.65; margin-top: 16px; }
+    footer h4 { margin-bottom: 16px; }
+    footer ul { list-style: none; display: grid; gap: 10px; color: rgba(255,247,229,.68); }
+    footer a:hover { color: var(--champagne); }
+    .copyright { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding-top: 24px; color: rgba(255,247,229,.55); font-size: 13px; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 100;
+      background: #18130c;
+      color: #fff7e5;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+      padding: 16px 18px;
+      border-radius: 18px;
+      transform: translateY(24px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1060px) {
+      .nav-links { display: none; }
+      .menu-btn { display: inline-flex; }
+      .hero-grid, .split, .faq-contact { grid-template-columns: 1fr; }
+      .hero-card { min-height: 560px; }
+      .features-grid, .stats-box { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.large { grid-row: span 1; }
+      .price-grid, .trainers-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .price-card.featured { transform: none; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 720px) {
+      .top-strip .container { justify-content: center; text-align: center; padding: 8px 0; }
+      .nav-inner { min-height: 70px; }
+      .brand { font-size: 20px; }
+      .brand-mark { width: 42px; height: 42px; }
+      .nav-actions .btn { display: none; }
+      .hero { padding: 48px 0 70px; }
+      .hero p { font-size: 16px; }
+      .hero-card { min-height: 520px; border-radius: 30px; }
+      .coach-panel, .session-panel { display: none; }
+      .booking-panel { left: 14px; right: 14px; bottom: 14px; }
+      .booking-panel .slots { grid-template-columns: 1fr; }
+      .stats-box, .features-grid, .programs-grid, .gallery-grid, .form-grid, .contact-meta, .footer-grid { grid-template-columns: 1fr; }
+      .stat { border-right: 0; border-bottom: 1px solid var(--line); }
+      .stat:last-child { border-bottom: 0; }
+      section { padding: 70px 0; }
+      .section-head { display: block; }
+      .pricing { padding: 34px 18px; border-radius: 30px; }
+      .gallery-item.wide { grid-column: span 1; }
+      .image-stack { min-height: 420px; }
+      .contact-card { padding: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container">
+      <p><span>Grand Opening Offer:</span> 7-day premium trial + body assessment included.</p>
+      <p>Open daily · 5:00 AM – 11:00 PM · Pune</p>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="AuricFit Club home">
+        <span class="brand-mark">AF</span>
+        <span>AuricFit <small>Premium Fitness Club</small></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#why">Why Us</a>
+        <a href="#programs">Programs</a>
+        <a href="#gallery">Studio</a>
+        <a href="#plans">Plans</a>
+        <a href="#trainers">Trainers</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="#contact">Book Trial</a>
+        <button class="menu-btn" aria-label="Open menu" id="menuBtn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><i></i> Premium gym · strength · wellness · recovery</div>
+          <h1>Train in a <span class="gradient-text">luxury fitness</span> space built for real progress.</h1>
+          <p>A bright, elegant gym experience with expert coaching, smart strength zones, recovery support, and membership plans designed around your lifestyle — not pressure.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Start Free Assessment</a>
+            <a href="#programs" class="btn btn-ghost">Explore Programs</a>
+          </div>
+          <div class="mini-proof" style="margin-top: 26px;">
+            <div class="avatars">
+              <img alt="Member portrait" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" />
+              <img alt="Member portrait" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" />
+              <img alt="Member portrait" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" />
+            </div>
+            <span>Trusted by 2,400+ active members</span>
+          </div>
+        </div>
+
+        <div class="hero-card reveal" aria-label="Premium gym hero visual">
+          <div class="hero-photo">
+            <img alt="Bright premium gym interior" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85" />
+          </div>
+          <div class="floating-panel coach-panel">
+            <div class="coach-row">
+              <img alt="Personal coach" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=220&q=80" />
+              <div>
+                <strong>1:1 Coach Scan</strong>
+                <span>Posture · strength · mobility</span>
+              </div>
+            </div>
+          </div>
+          <div class="floating-panel session-panel">
+            <div class="number">45</div>
+            <span>minute guided premium trial session</span>
+          </div>
+          <div class="floating-panel booking-panel">
+            <h3>Today’s Prime Slots</h3>
+            <div class="slots">
+              <div class="slot">6:00 AM</div>
+              <div class="slot active">7:30 AM</div>
+              <div class="slot">6:30 PM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-ribbon">
+      <div class="container">
+        <div class="stats-box reveal">
+          <div class="stat"><strong data-count="2400">0</strong><span>Active Members</span></div>
+          <div class="stat"><strong data-count="18">0</strong><span>Elite Coaches</span></div>
+          <div class="stat"><strong data-count="36">0</strong><span>Weekly Classes</span></div>
+          <div class="stat"><strong data-count="96">0</strong><span>% Member Satisfaction</span></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="why">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="copy">
+            <div class="kicker">Why AuricFit</div>
+            <h2>Designed like a premium club. Managed like a performance lab.</h2>
+          </div>
+          <p>Every zone is built to make training feel smooth, motivating, safe, and consistent — from your first consultation to your weekly progress review.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <div class="icon">🏋️</div>
+            <h3>Smart Strength Floor</h3>
+            <p>Premium machines, free weights, guided racks, and clean spacing so every workout feels focused and comfortable.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon">📊</div>
+            <h3>Progress Tracking</h3>
+            <p>Monthly fitness reviews, posture checks, strength records, and practical routines that change as you improve.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon">🧘</div>
+            <h3>Recovery & Mobility</h3>
+            <p>Dedicated stretch zone, mobility classes, breathing work, and recovery-focused programming for long-term fitness.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon">✨</div>
+            <h3>Premium Atmosphere</h3>
+            <p>Bright interiors, elegant textures, fresh lighting, curated music, and a clean luxury feel in every corner.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs">
+      <div class="container split">
+        <div class="image-stack reveal">
+          <img alt="Personal training in premium gym" src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=900&q=85" />
+          <div class="stack-label">
+            <strong>Training that fits your real life.</strong>
+            <span>Strength, energy, flexibility, confidence, and sustainable routines — all in one club.</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-head reveal" style="margin-bottom: 22px;">
+            <div class="copy">
+              <div class="kicker">Programs</div>
+              <h2>Choose your path. We’ll build the plan.</h2>
+              <p>These cards can be edited for your actual gym services, packages, and local pricing.</p>
+            </div>
+          </div>
+
+          <div class="programs-grid">
+            <article class="program-card reveal">
+              <h3>Personal Training</h3>
+              <p>1:1 coaching with form correction, weekly planning, and habit support.</p>
+              <ul>
+                <li>Beginner-friendly onboarding</li>
+                <li>Strength + mobility balance</li>
+                <li>Weekly progress adjustments</li>
+              </ul>
+            </article>
+            <article class="program-card reveal">
+              <h3>Group Burn</h3>
+              <p>High-energy classes with controlled intensity and coach-led movement.</p>
+              <ul>
+                <li>HIIT, circuit, core, conditioning</li>
+                <li>Morning and evening slots</li>
+                <li>Motivating community feel</li>
+              </ul>
+            </article>
+            <article class="program-card reveal">
+              <h3>Yoga & Mobility</h3>
+              <p>Build flexibility, posture, breathing control, and recovery habits.</p>
+              <ul>
+                <li>Mobility flow sessions</li>
+                <li>Stretch and posture correction</li>
+                <li>Stress-free recovery focus</li>
+              </ul>
+            </article>
+            <article class="program-card reveal">
+              <h3>Elite Performance</h3>
+              <p>Advanced coaching for athletes, sport students, and serious lifters.</p>
+              <ul>
+                <li>Power, speed, endurance blocks</li>
+                <li>Coach-supervised programming</li>
+                <li>Recovery and injury-aware training</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="copy">
+            <div class="kicker">Studio Experience</div>
+            <h2>Bright interiors, premium lighting, and serious training zones.</h2>
+          </div>
+          <a href="#contact" class="btn btn-dark">Visit The Club</a>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item large reveal"><img alt="Strength training area" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85" /><span>Strength Floor</span></div>
+          <div class="gallery-item reveal"><img alt="Cardio training area" src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=700&q=85" /><span>Cardio Studio</span></div>
+          <div class="gallery-item reveal"><img alt="Gym equipment closeup" src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=700&q=85" /><span>Premium Equipment</span></div>
+          <div class="gallery-item wide reveal"><img alt="Yoga and mobility zone" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1100&q=85" /><span>Mobility & Recovery</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans">
+      <div class="container">
+        <div class="pricing reveal">
+          <div class="section-head" style="margin-bottom:0;">
+            <div class="copy">
+              <div class="kicker">Membership</div>
+              <h2>Simple plans with a premium feel.</h2>
+            </div>
+            <p>Use these as demo prices. Replace them with your real gym pricing before publishing.</p>
+          </div>
+
+          <div class="price-grid">
+            <article class="price-card">
+              <span class="tag">Starter</span>
+              <h3>Basic Access</h3>
+              <div class="price">₹1,499<small>/mo</small></div>
+              <ul>
+                <li>Gym floor access</li>
+                <li>Locker facility</li>
+                <li>1 assessment per month</li>
+                <li>Workout plan template</li>
+              </ul>
+              <a class="btn btn-ghost" href="#contact">Choose Basic</a>
+            </article>
+
+            <article class="price-card featured">
+              <span class="tag">Most Popular</span>
+              <h3>Premium Coaching</h3>
+              <div class="price">₹2,999<small>/mo</small></div>
+              <ul>
+                <li>Gym + group classes</li>
+                <li>2 coach reviews monthly</li>
+                <li>Mobility and recovery access</li>
+                <li>Nutrition habit guidance</li>
+              </ul>
+              <a class="btn btn-dark" href="#contact">Choose Premium</a>
+            </article>
+
+            <article class="price-card">
+              <span class="tag">Elite</span>
+              <h3>1:1 Transformation</h3>
+              <div class="price">₹7,999<small>/mo</small></div>
+              <ul>
+                <li>Dedicated personal trainer</li>
+                <li>Custom weekly program</li>
+                <li>Progress dashboard</li>
+                <li>Priority prime-hour slots</li>
+              </ul>
+              <a class="btn btn-ghost" href="#contact">Choose Elite</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trainers">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="copy">
+            <div class="kicker">Coaching Team</div>
+            <h2>Coaches who make training clear, safe, and consistent.</h2>
+          </div>
+          <p>Trainer profiles are demo content. Swap names and images with your real gym team.</p>
+        </div>
+
+        <div class="trainers-grid">
+          <article class="trainer-card reveal">
+            <img alt="Strength coach" src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=85" />
+            <div class="trainer-info">
+              <h3>Arjun Mehta</h3>
+              <p>Strength coach focused on technique, confidence, and steady progress.</p>
+              <div class="trainer-tags"><span>Strength</span><span>Beginners</span><span>Form</span></div>
+            </div>
+          </article>
+
+          <article class="trainer-card reveal">
+            <img alt="Mobility coach" src="https://images.unsplash.com/photo-1599447292180-45fd84092ef4?auto=format&fit=crop&w=900&q=85" />
+            <div class="trainer-info">
+              <h3>Riya Kapoor</h3>
+              <p>Mobility and wellness coach for posture, flexibility, and recovery routines.</p>
+              <div class="trainer-tags"><span>Yoga</span><span>Mobility</span><span>Recovery</span></div>
+            </div>
+          </article>
+
+          <article class="trainer-card reveal">
+            <img alt="Performance coach" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?auto=format&fit=crop&w=900&q=85" />
+            <div class="trainer-info">
+              <h3>Kabir Shah</h3>
+              <p>Performance coach for athletic conditioning, endurance, and structured training.</p>
+              <div class="trainer-tags"><span>HIIT</span><span>Athlete</span><span>Endurance</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stories">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="copy">
+            <div class="kicker">Member Stories</div>
+            <h2>Members stay because the experience feels premium and personal.</h2>
+          </div>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="quote-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>“The gym looks premium, but the best part is how comfortable the coaching feels. No confusion, no pressure — just a clear plan.”</p>
+            <div class="member"><img alt="Member" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80" /><div><strong>Neha S.</strong><span>Premium member</span></div></div>
+          </article>
+          <article class="quote-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>“The morning slots, clean equipment, and monthly reviews helped me stay regular. It feels more like a club than a basic gym.”</p>
+            <div class="member"><img alt="Member" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80" /><div><strong>Rohan D.</strong><span>Strength program</span></div></div>
+          </article>
+          <article class="quote-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>“I joined for fitness, but the mobility classes improved my posture and energy. The whole space is bright and motivating.”</p>
+            <div class="member"><img alt="Member" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=120&q=80" /><div><strong>Aarya M.</strong><span>Mobility member</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container faq-contact">
+        <div class="reveal">
+          <div class="kicker">FAQ</div>
+          <h2>Everything new members ask first.</h2>
+          <div class="faq-list" style="margin-top: 26px;">
+            <details open>
+              <summary>Is this gym beginner friendly?</summary>
+              <p>Yes. Every new member can start with an assessment and a simple workout plan so they know exactly what to do from day one.</p>
+            </details>
+            <details>
+              <summary>Do you provide personal training?</summary>
+              <p>Yes. You can choose 1:1 personal training, guided coaching reviews, or group classes depending on your goal and budget.</p>
+            </details>
+            <details>
+              <summary>Can I try before joining?</summary>
+              <p>Yes. The landing page is set up with a free trial booking flow. You can connect it later to WhatsApp, Google Forms, or your backend.</p>
+            </details>
+            <details>
+              <summary>Can this website be hosted free?</summary>
+              <p>Yes. This is a single static HTML file, so you can host it on GitHub Pages, Netlify, Vercel, or any normal web hosting.</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="contact-card reveal" id="contact">
+          <div class="kicker">Book Trial</div>
+          <h2 style="font-size: clamp(30px, 4vw, 48px);">Claim your premium trial session.</h2>
+          <p class="lead">Fill this demo form. You can later connect it with WhatsApp, EmailJS, Firebase, Google Sheets, or a Node backend.</p>
+
+          <form id="trialForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" required />
+              </div>
+              <div class="field">
+                <label for="goal">Fitness Goal</label>
+                <select id="goal" name="goal" required>
+                  <option value="">Select goal</option>
+                  <option>Beginner fitness</option>
+                  <option>Strength training</option>
+                  <option>Weight management</option>
+                  <option>Mobility & recovery</option>
+                  <option>Sports performance</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="slot">Preferred Slot</label>
+                <select id="slot" name="slot" required>
+                  <option value="">Select slot</option>
+                  <option>Morning 5 AM – 9 AM</option>
+                  <option>Afternoon 12 PM – 4 PM</option>
+                  <option>Evening 5 PM – 9 PM</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="message">Anything specific?</label>
+                <textarea id="message" name="message" placeholder="Tell us your goal, timing, or questions..."></textarea>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit" style="margin-top: 18px; width: 100%;">Book My Trial</button>
+          </form>
+
+          <div class="contact-meta">
+            <div class="meta-box"><strong>Location</strong><span>Kothrud, Pune</span></div>
+            <div class="meta-box"><strong>Call</strong><span>+91 98765 43210</span></div>
+            <div class="meta-box"><strong>Timing</strong><span>5 AM – 11 PM</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#home" class="brand">
+            <span class="brand-mark">AF</span>
+            <span>AuricFit <small>Premium Fitness Club</small></span>
+          </a>
+          <p>A premium bright gym website template crafted for modern fitness clubs, personal training studios, and wellness spaces.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#gallery">Studio</a></li>
+            <li><a href="#plans">Plans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Programs</h4>
+          <ul>
+            <li>Personal Training</li>
+            <li>Group Burn</li>
+            <li>Yoga & Mobility</li>
+            <li>Elite Performance</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>+91 98765 43210</li>
+            <li>hello@auricfitclub.in</li>
+            <li>Kothrud, Pune</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 2026 AuricFit Club. All rights reserved.</span>
+        <span>Static HTML · Ready for GitHub Pages</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Trial request saved! Connect this form to WhatsApp or backend next.</div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuBtn?.addEventListener('click', () => {
+      const open = navLinks.style.display === 'flex';
+      navLinks.style.display = open ? 'none' : 'flex';
+      navLinks.style.position = 'absolute';
+      navLinks.style.left = '16px';
+      navLinks.style.right = '16px';
+      navLinks.style.top = '78px';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.borderRadius = '24px';
+      navLinks.style.padding = '14px';
+      navLinks.style.background = 'rgba(255,250,240,.96)';
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1060) navLinks.style.display = 'none';
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.count);
+        let start = 0;
+        const duration = 1200;
+        const startTime = performance.now();
+        const suffix = target === 96 ? '%' : target >= 1000 ? '+' : '';
+        const tick = (time) => {
+          const progress = Math.min((time - startTime) / duration, 1);
+          const value = Math.floor(progress * target);
+          el.textContent = value.toLocaleString('en-IN') + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        countObserver.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+
+    const form = document.getElementById('trialForm');
+    const toast = document.getElementById('toast');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      toast.classList.add('show');
+      form.reset();
+      setTimeout(() => toast.classList.remove('show'), 3200);
+    });
+  </script>
+</body>
+</html>
